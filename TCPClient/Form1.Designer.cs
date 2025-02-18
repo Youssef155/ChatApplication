@@ -33,8 +33,8 @@
             tbMsg = new TextBox();
             btnConnect = new Button();
             label1 = new Label();
-            tbIPAddress = new TextBox();
-            tbPortNumber = new TextBox();
+            tbServerIP = new TextBox();
+            tbServerPortNo = new TextBox();
             tbConsoleOutput = new TextBox();
             label3 = new Label();
             label4 = new Label();
@@ -83,6 +83,7 @@
             btnConnect.TabIndex = 12;
             btnConnect.Text = "Connect";
             btnConnect.UseVisualStyleBackColor = false;
+            btnConnect.Click += btnConnect_Click;
             // 
             // label1
             // 
@@ -95,23 +96,21 @@
             label1.TabIndex = 11;
             label1.Text = "Server IP";
             // 
-            // tbIPAddress
+            // tbServerIP
             // 
-            tbIPAddress.Location = new Point(108, 487);
-            tbIPAddress.Margin = new Padding(4);
-            tbIPAddress.Name = "tbIPAddress";
-            tbIPAddress.Size = new Size(153, 31);
-            tbIPAddress.TabIndex = 10;
-            tbIPAddress.Text = "192.168.1.6";
+            tbServerIP.Location = new Point(108, 487);
+            tbServerIP.Margin = new Padding(4);
+            tbServerIP.Name = "tbServerIP";
+            tbServerIP.Size = new Size(153, 31);
+            tbServerIP.TabIndex = 10;
             // 
-            // tbPortNumber
+            // tbServerPortNo
             // 
-            tbPortNumber.Location = new Point(143, 530);
-            tbPortNumber.Margin = new Padding(4);
-            tbPortNumber.Name = "tbPortNumber";
-            tbPortNumber.Size = new Size(118, 31);
-            tbPortNumber.TabIndex = 9;
-            tbPortNumber.Text = "23000";
+            tbServerPortNo.Location = new Point(143, 530);
+            tbServerPortNo.Margin = new Padding(4);
+            tbServerPortNo.Name = "tbServerPortNo";
+            tbServerPortNo.Size = new Size(118, 31);
+            tbServerPortNo.TabIndex = 9;
             // 
             // tbConsoleOutput
             // 
@@ -156,8 +155,8 @@
             Controls.Add(tbMsg);
             Controls.Add(btnConnect);
             Controls.Add(label1);
-            Controls.Add(tbIPAddress);
-            Controls.Add(tbPortNumber);
+            Controls.Add(tbServerIP);
+            Controls.Add(tbServerPortNo);
             Controls.Add(tbConsoleOutput);
             Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
@@ -174,8 +173,8 @@
         private TextBox tbMsg;
         private Button btnConnect;
         private Label label1;
-        private TextBox tbIPAddress;
-        private TextBox tbPortNumber;
+        private TextBox tbServerIP;
+        private TextBox tbServerPortNo;
         private TextBox tbConsoleOutput;
         private Label label3;
         private Label label4;
