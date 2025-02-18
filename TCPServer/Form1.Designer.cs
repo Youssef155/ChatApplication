@@ -120,6 +120,7 @@
             btnSend.TabIndex = 7;
             btnSend.Text = "Send";
             btnSend.UseVisualStyleBackColor = false;
+            btnSend.Click += btnSend_Click;
             // 
             // Form1
             // 
