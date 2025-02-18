@@ -31,8 +31,9 @@ namespace TCPServer
 
             listener = new TcpListener(ipAddress, port);
             listener.Start();
-
             listener.BeginAcceptTcpClient(onCompleteAcceptTcpClient, listener);
+            btnStart.Enabled = false;
+            btnStart.BackColor = Color.DarkRed;
         }
 
         private void onCompleteAcceptTcpClient(IAsyncResult iar)
