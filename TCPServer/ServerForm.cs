@@ -4,13 +4,13 @@ using System.Text;
 
 namespace TCPServer
 {
-    public partial class Form1 : Form
+    public partial class ServerForm : Form
     {
         TcpListener listener;
         TcpClient tcpClient;
         byte[] buffer;
 
-        public Form1()
+        public ServerForm()
         {
             InitializeComponent();
         }
