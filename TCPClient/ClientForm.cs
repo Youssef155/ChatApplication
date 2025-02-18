@@ -1,12 +1,13 @@
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace TCPClient
 {
-    public partial class Form1 : Form
+    public partial class ClientForm : Form
     {
         TcpClient tcpClient;
-        public Form1()
+        public ClientForm()
         {
             InitializeComponent();
         }
@@ -31,10 +32,11 @@ namespace TCPClient
 
                 tcpClient = new();
                 tcpClient.BeginConnect(ipa, port, onCompleteConnect, tcpClient);
+                btnConnect.Enabled = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);    
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -46,6 +48,45 @@ namespace TCPClient
             {
                 client = iar.AsyncState as TcpClient;
                 client.EndConnect(iar);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            byte[] data;
+
+            if(string.IsNullOrEmpty(tbMsg.Text)) return;
+
+            try
+            {
+                data = Encoding.ASCII.GetBytes(tbMsg.Text);
+
+                if (tcpClient != null)
+                {
+                    if(tcpClient.Client.Connected)
+                    {
+                        tcpClient.GetStream().BeginWrite(data, 0, data.Length, onCompleteWriteToServer, tcpClient);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void onCompleteWriteToServer(IAsyncResult iar)
+        {
+            TcpClient client;
+
+            try
+            {
+                client = iar.AsyncState as TcpClient;
+                client.GetStream().EndWrite(iar);
             }
             catch (Exception ex)
             {

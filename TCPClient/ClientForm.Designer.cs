@@ -1,6 +1,6 @@
 ﻿namespace TCPClient
 {
-    partial class Form1
+    partial class ClientForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -50,6 +50,7 @@
             btnSend.TabIndex = 15;
             btnSend.Text = "Send";
             btnSend.UseVisualStyleBackColor = false;
+            btnSend.Click += btnSend_Click;
             // 
             // label2
             // 
